@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>check stamp</title>
+  <style>
+    button{border : 1px solid #f0f0f0;}
+    button.ex-button {
+      width: 46.5px;
+      height: inherit;
+      height: 32px;
+      padding: 4px;
+      display: inline-flex;
+      -webkit-box-pack: center;
+      background: transparent;
+    }
+    .for-count {
+      margin-left: 0.5rem;
+      font-size: 11px;
+      font-weight: bold;
+      color: #ef5c66;
+      line-height: 1;
+      box-sizing: inherit;
+      text-align: center;
+      text-indent: 0px;
+      text-shadow: none;
+    }
+    .item-list {
+      display: flex;
+      justify-content: left;
+      align-items: end;
+    }
+    .item-list.item {
+      padding: 0em 0em;
+      min-width: 5em;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <label>file name</label>:
+    <input id="fname" type="text" value="megamoji.png" />
+    <div class="item-list">
+      <img id="fileOrg" class="item" src="./megamoji.png" style="border:dashed;">
+      <button class="item ex-button">
+        <img id="fileTo22x22" width="22" height="22" src="./megamoji.png">
+        <span class="for-count">10</span>
+      </button>
+    </div>
+  </div>
+  <script>
+    document.getElementById("fname").addEventListener('keydown', onChangeFileName);
+    function onChangeFileName(obj) {
+      if (obj.key != 'Enter') return;
+      const fname = "./"+obj.target.value;
+      const broDivision = obj.target.nextElementSibling;
+      const orgImg = broDivision.querySelector('img');
+      orgImg.src = fname;
+      const img22HolderBtn = orgImg.nextElementSibling;
+      const img22 = img22HolderBtn.querySelector('img');
+      img22.src = fname;
+    }
+  </script>
+</body>
+</html>
